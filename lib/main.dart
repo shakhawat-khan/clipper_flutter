@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:practice/triangle_clipper.dart';
+import 'package:like_button/like_button.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,11 +29,23 @@ class MyHomePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ClipPath(
-              clipper: TriangleClipper(),
-              child: Image.asset('assets/fuji.jpg'),
-            ),
+            Container(
+              child: LikeButton(
+                size: 60,
+                animationDuration: Duration(milliseconds: 1000),
+                likeCount: 120,
+                countPostion: CountPostion.bottom,
+                likeBuilder: (isTapped) {
+                  return Icon(
+                    Icons.shopping_cart,
+                    color: isTapped ? Colors.deepPurple : Colors.grey,
+                  );
+                },
+              ),
+              height: 100,
+            )
           ],
         ),
       ),
